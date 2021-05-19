@@ -1,13 +1,21 @@
 import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
-import App from './layouts/index'
 import './index.scss'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
+import { Router, Switch, Route } from 'react-router-dom'
+import router from './router/index'
+import history from './router/history'
 
 ReactDOM.render(
   <ConfigProvider locale={zhCN}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        {
+          router.map((routeItem, index) => <Route key={routeItem.key || `route_app_${index}`} {...routeItem.props}/>)
+        }
+      </Switch>
+    </Router>
   </ConfigProvider>,
   document.getElementById('root')
 )

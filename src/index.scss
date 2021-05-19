@@ -37,3 +37,15 @@ input{
 input[type="text"]:focus, input[type="password"]:focus {
   outline: none;
 }
+
+$width-design: 1920;
+$height-design: 1080;
+
+//根据设计等比例计算某宽度vw
+@function vw($px) {
+  @return ($px / ($width-design / 100)) * 1vw;
+}
+//根据设计等比例计算某宽度vw
+@function vh($px) {
+  @return ($px / ($height-design / 100)) * 1vh;
+}
