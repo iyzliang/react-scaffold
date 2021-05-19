@@ -10,8 +10,7 @@ const router: IRouterItem[] = [
     key: 'app',
     props: {
       path: '/',
-      component: App,
-      exact: false
+      component: App
     },
     children: [
       {

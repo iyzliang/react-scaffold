@@ -12,20 +12,16 @@ interface Props extends RouteComponentProps {
 
 }
 interface State {
-  collapsed: boolean
 }
 
 export default class App extends Component<Props, State> {
-  state = {
-    collapsed: false
-  }
+  state = {}
 
   componentDidMount () {
     console.log(this.props)
   }
 
   render () {
-    const { collapsed } = this.state
     return (
       <Layout className={styles.container}>
         <Header className={styles.header}>Header</Header>
@@ -36,7 +32,6 @@ export default class App extends Component<Props, State> {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
-            inlineCollapsed={collapsed}
           >
             <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
               <Menu.Item key="1">option1</Menu.Item>

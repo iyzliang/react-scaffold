@@ -3,19 +3,22 @@ import reportWebVitals from './reportWebVitals'
 import './index.scss'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
-import { Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import router from './router/index'
-import history from './router/history'
+import { Provider } from 'react-redux'
+import store from './redux/index'
 
 ReactDOM.render(
   <ConfigProvider locale={zhCN}>
-    <Router history={history}>
-      <Switch>
-        {
-          router.map((routeItem, index) => <Route key={routeItem.key || `route_app_${index}`} {...routeItem.props}/>)
-        }
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          {
+            router.map((routeItem, index) => <Route key={routeItem.key || `route_app_${index}`} {...routeItem.props}/>)
+          }
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   </ConfigProvider>,
   document.getElementById('root')
 )
